@@ -45,6 +45,40 @@
             border: none;
             padding: 5px 8px;
         }
+        .dark body {
+    background: #1e293b;
+}
+
+.dark #appPage {
+    background: #1e293b;
+    color: white;
+}
+
+.dark .card {
+    background: #334155;
+    color: white;
+}
+
+.dark table {
+    background: #334155;
+    color: white;
+}
+
+.dark th {
+    background: #0f172a;
+}
+
+.dark tr:nth-child(even) {
+    background: #1e293b;
+}
+
+.dark input, 
+.dark select {
+    background: #475569;
+    color: white;
+    border: 1px solid #64748b;
+}
+
     </style>
 </head>
 <body>
@@ -60,6 +94,10 @@
 <div id="appPage" style="display:none;">
     <h1>🚛 Freight Load Tracker</h1>
     <button onclick="logout()" style="float:right; margin-bottom:10px;">Logout</button>
+    <button onclick="toggleDarkMode()" id="themeToggle" style="margin-left:10px;">
+    🌙 Dark Mode
+</button>
+
 
     <input type="text" id="loadId" placeholder="Load ID">
     <input type="text" id="broker" placeholder="Broker Name">
@@ -348,6 +386,17 @@ function downloadPDF() {
     printWindow.document.close();
     printWindow.print();
 }
+function toggleDarkMode() {
+    document.documentElement.classList.toggle("dark");
+
+    var button = document.getElementById("themeToggle");
+
+    if (document.documentElement.classList.contains("dark")) {
+        button.innerText = "☀️ Light Mode";
+    } else {
+        button.innerText = "🌙 Dark Mode";
+    }
+}
 
 
 </script>
@@ -355,3 +404,4 @@ function downloadPDF() {
 
 </body>
 </html>
+
