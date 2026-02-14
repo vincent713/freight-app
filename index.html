@@ -1,84 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Freight Load Tracker</title>
-    <style>
-        body {
-            font-family: Arial;
-            background-color: #f4f4f4;
-            padding: 20px;
-        }
+<title>Vincent Logistics System</title>
+ 
+<div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
 
-        h1 {
-            text-align: center;
-        }
+    <div>
+        <div style="font-size:18px; font-weight:bold; color:#2563eb;">
+            VLS LOGISTICS
+        </div>
+        <h1 style="margin:0;">🚛 Vincent Logistics Management System</h1>
+    </div>
 
-        input, select, button {
-            padding: 8px;
-            margin: 5px;
-        }
+    <div>
+        <button onclick="toggleDarkMode()" id="themeToggle">
+            🌙 Dark Mode
+        </button>
+        <button onclick="logout()">
+            Logout
+        </button>
+    </div>
 
-        table {
-            width: 100%;
-            background: white;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-
-        th {
-            background: #007bff;
-            color: white;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        .delete-btn {
-            background: red;
-            color: white;
-            border: none;
-            padding: 5px 8px;
-        }
-        .dark body {
-    background: #1e293b;
-}
-
-.dark #appPage {
-    background: #1e293b;
-    color: white;
-}
-
-.dark .card {
-    background: #334155;
-    color: white;
-}
-
-.dark table {
-    background: #334155;
-    color: white;
-}
-
-.dark th {
-    background: #0f172a;
-}
-
-.dark tr:nth-child(even) {
-    background: #1e293b;
-}
-
-.dark input, 
-.dark select {
-    background: #475569;
-    color: white;
-    border: 1px solid #64748b;
-}
-
+</div>
+         
     </style>
 </head>
 <body>
@@ -92,7 +36,12 @@
 </div>
 
 <div id="appPage" style="display:none;">
-    <h1>🚛 Freight Load Tracker</h1>
+    <div style="font-size:18px; font-weight:bold; color:#2563eb;">
+    VLS LOGISTICS
+</div>
+
+    <h1>🚛 Vincent Logistics Management System</h1>
+
     <button onclick="logout()" style="float:right; margin-bottom:10px;">Logout</button>
     <button onclick="toggleDarkMode()" id="themeToggle" style="margin-left:10px;">
     🌙 Dark Mode
@@ -404,4 +353,5 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
