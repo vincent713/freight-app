@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Vincent Logistics System</title>
- 
+<title>VSC Freight Management System</title>
+
 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
 
     <div>
         <div style="font-size:18px; font-weight:bold; color:#2563eb;">
-            VLS LOGISTICS
+            VSC LOGISTICS
         </div>
-        <h1 style="margin:0;">🚛 Vincent Logistics Management System</h1>
+        <h1 style="margin:0;">🚛 VSC Freight Management System</h1>
     </div>
 
     <div>
         <button onclick="toggleDarkMode()" id="themeToggle">
             🌙 Dark Mode
         </button>
-        
+        <button onclick="logout()">
+            Logout
         </button>
     </div>
 
 </div>
+
          
     </style>
 </head>
@@ -102,7 +104,11 @@
         </thead>
         <tbody id="loadTable"></tbody>
     </table>
-    
+    <hr style="margin-top:40px;">
+<p style="text-align:center; font-size:12px; color:gray;">
+    © 2026 VSC Logistics. All rights reserved.
+</p>
+
 </div>
 
     </tbody>
@@ -351,6 +357,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
