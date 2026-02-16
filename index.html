@@ -254,6 +254,14 @@ window.onload = function() {
             load.rate,
             load.status
         )
+    // Load saved theme
+var savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
+    document.documentElement.classList.add("dark");
+    document.getElementById("themeToggle").innerText = "☀️ Light Mode";
+}
+                   
     );
 
     updateDashboard();
@@ -374,8 +382,10 @@ function toggleDarkMode() {
 
     if (document.documentElement.classList.contains("dark")) {
         button.innerText = "☀️ Light Mode";
+        localStorage.setItem("theme", "dark");
     } else {
         button.innerText = "🌙 Dark Mode";
+        localStorage.setItem("theme", "light");
     }
 }
 
@@ -385,6 +395,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
