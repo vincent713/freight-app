@@ -11,6 +11,31 @@
 
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+
+ 
+    <div style="display:flex; align-items:center; gap:12px;">
+        <img src="vsc-logo.png" alt="VSC Logo" style="height:90px;">
+        <div>
+            <h1 style="margin:0;">VSC Freight Management System</h1>
+          
+
+            </div>
+    </div>
+
+    <div>
+        <button onclick="toggleDarkMode()" id="themeToggle">
+            🌙 Dark Mode
+        </button>
+        <button onclick="logout()">
+            Logout
+        </button>
+    </div>
+
+</div>
+<div id="changePasswordBox" style="display:none; margin-top:15px;">
+    <input type="password" id="newPassword" placeholder="New Password">
+    <button onclick="changePassword()">Save</button>
+</div>
 /* Make table scrollable on small screens */
 .table-container {
     overflow-x: auto;
@@ -35,30 +60,6 @@
         margin-top: 5px;
     }
 }
-
-    <div style="display:flex; align-items:center; gap:12px;">
-        <img src="vsc-logo.png" alt="VSC Logo" style="height:90px;">
-        <div>
-            <h1 style="margin:0;">VSC Freight Management System</h1>
-          
-
-            </div>
-    </div>
-
-    <div>
-        <button onclick="toggleDarkMode()" id="themeToggle">
-            🌙 Dark Mode
-        </button>
-        <button onclick="logout()">
-            Logout
-        </button>
-    </div>
-
-</div>
-<div id="changePasswordBox" style="display:none; margin-top:15px;">
-    <input type="password" id="newPassword" placeholder="New Password">
-    <button onclick="changePassword()">Save</button>
-</div>
 
          
     </style>
@@ -458,6 +459,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
