@@ -5,21 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>VSC Freight Management System</title>
-<button onclick="showChangePassword()">
-    Change Password
-</button>
-
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
+  /* Make table scrollable on small screens */
+.table-container {
+    overflow-x: auto;
+}
 
-    <div style="display:flex; align-items:center; gap:12px;">
-        <img src="vsc-logo.png" alt="VSC Logo" style="height:90px;">
-        <div>       
+/* Responsive Dashboard */
+@media (max-width: 768px) {
 
-    <h1 style="margin:0;">VSC Freight Management System</h1>
-          
+    .dashboard {
+        flex-direction: column;
+    }
 
-            </div>
+    .card {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    button {
+        margin-top: 5px;
+    }
+}
+    
+                               
+    </style>
+</head>
+<body>
+      </div>
     </div>
 
     <div>
@@ -36,11 +53,13 @@
     <input type="password" id="newPassword" placeholder="New Password">
     <button onclick="changePassword()">Save</button>
 </div>
-
-          
-    </style>
-</head>
-<body>
+     <h1 style="margin:0;">VSC Freight Management System</h1>
+    <div style="display:flex; align-items:center; gap:12px;">
+        <img src="vsc-logo.png" alt="VSC Logo" style="height:90px;">
+        <div> 
+    <button onclick="showChangePassword()">
+    Change Password
+</button>
 
 <div id="loginPage">
     <h2>🔐 Freight Login</h2>
@@ -435,6 +454,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
