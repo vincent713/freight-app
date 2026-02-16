@@ -58,10 +58,22 @@ body {
 <div id="appPage" style="display:none;">
     <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
 
-    <div style="display:flex; align-items:center; gap:15px;">
-        <img src="vsc-logo.png" alt="VSC Logo" style="height:80px;">
-        <h1 style="margin:0;">VSC Freight Management System</h1>
-    </div>
+<div id="loginPage" style="text-align:center; margin-top:80px;">
+
+    <img src="vsc-logo.png" alt="VSC Logo" style="height:100px; margin-bottom:20px;">
+
+    <h2>VSC Logistics</h2>
+    <p style="color:gray; margin-bottom:30px;">Freight Management System</p>
+
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+
+    <button onclick="login()">Login</button>
+
+    <p id="error" style="color:red;"></p>
+
+</div>
+
 
     <div>
         <button onclick="toggleDarkMode()" id="themeToggle">
@@ -454,6 +466,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
