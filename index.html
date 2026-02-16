@@ -2,13 +2,12 @@
 <html>
 <head>
 
-<img src="vsc-logo.png" alt="VSC Logo" style="height:80px; width:auto;">
-<button onclick="showChangePassword()">
-    Change Password
-</button>
-
 
 <title>VSC Freight Management System</title>
+<div id="changePasswordBox" style="display:none; margin-top:15px;">
+    <input type="password" id="newPassword" placeholder="New Password">
+    <button onclick="changePassword()">Save</button>
+</div>
 
 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:20px;">
 
@@ -430,6 +429,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
