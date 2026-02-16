@@ -243,9 +243,11 @@ window.onload = function() {
 
 };
 window.onload = function() {
+
+    // Load saved loads
     let savedLoads = JSON.parse(localStorage.getItem("loads")) || [];
 
-    savedLoads.forEach(load => 
+    savedLoads.forEach(load =>
         addLoadToTable(
             load.loadId,
             load.broker,
@@ -254,19 +256,23 @@ window.onload = function() {
             load.rate,
             load.status
         )
-    // Load saved theme
-var savedTheme = localStorage.getItem("theme");
-
-if (savedTheme === "dark") {
-    document.documentElement.classList.add("dark");
-    document.getElementById("themeToggle").innerText = "☀️ Light Mode";
-}
-                   
     );
 
     updateDashboard();
 
+    // Load saved theme
+    var savedTheme = localStorage.getItem("theme");
+
+    if (savedTheme === "dark") {
+        document.documentElement.classList.add("dark");
+        var button = document.getElementById("themeToggle");
+        if(button){
+            button.innerText = "☀️ Light Mode";
+        }
+    }
+
 };
+
 
 
 function addLoad() {
@@ -395,6 +401,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
