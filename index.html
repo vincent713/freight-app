@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<img src="vsc-logo.png" alt="VSC Logo" style="height:100px; margin-bottom:20px;">    
+  
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VSC Freight Management System</title>
 
 <style>
+    #loginPage {
+    background: linear-gradient(135deg, #1e3a8a, #0f172a);
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    width: 320px;
+    text-align: center;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -48,12 +61,24 @@ body {
 
 </button>
 
-<div id="loginPage">
-    <h2>🔐 Freight Login</h2>
-    <input type="text" id="username" placeholder="Username"><br><br>
-    <input type="password" id="password" placeholder="Password"><br><br>
-    <button onclick="login()">Login</button>
-    <p id="error" style="color:red;"></p>
+<div id="loginPage" style="display:flex; justify-content:center; align-items:center; height:100vh;">
+
+    <div class="login-card">
+
+        <img src="vsc-logo.png" alt="VSC Logo" style="height:90px; margin-bottom:20px;">
+
+        <h2>VSC Logistics</h2>
+        <p style="color:gray; margin-bottom:25px;">Freight Management System</p>
+
+        <input type="text" id="username" placeholder="Username"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+
+        <button onclick="login()" style="width:100%;">Login</button>
+
+        <p id="error" style="color:red; margin-top:10px;"></p>
+
+    </div>
+
 </div>
 
 <div id="appPage" style="display:none;">
@@ -466,6 +491,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
