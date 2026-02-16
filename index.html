@@ -245,32 +245,26 @@ function login() {
     var savedPassword = localStorage.getItem("appPassword") || "1234";
 
     if(user === "admin" && pass === savedPassword) {
+
+        localStorage.setItem("isLoggedIn", "true");
+
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("appPage").style.display = "block";
+
     } else {
         document.getElementById("error").innerText = "Invalid login!";
     }
 }
 
 
-window.onload = function() {
-    let savedLoads = JSON.parse(localStorage.getItem("loads")) || [];
 
-    savedLoads.forEach(load => 
-        addLoadToTable(
-            load.loadId,
-            load.broker,
-            load.pickupDate,
-            load.deliveryDate,
-            load.rate,
-            load.status
-        )
-    );
 
-    updateDashboard();
-
-};
-window.onload = function() {
+window.// Check login session
+    if(localStorage.getItem("isLoggedIn") === "true") {
+    document.getElementById("loginPage").style.display = "none";
+    document.getElementById("appPage").style.display = "block";
+}
+onload = function() {
 
     // Load saved loads
     let savedLoads = JSON.parse(localStorage.getItem("loads")) || [];
@@ -373,9 +367,12 @@ function deleteRow(button) {
 }
 
 function logout() {
-    document.getElementById("appPage").style.display = "none";
+    localStorage.removeItem("isLoggedIn");
+
     document.getElementById("loginPage").style.display = "block";
+    document.getElementById("appPage").style.display = "none";
 }
+
 
 function downloadPDF() {
     var table = document.getElementById("loadTable");
@@ -429,6 +426,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
