@@ -126,6 +126,26 @@ function downloadPDF() {
 }
 
 <script>
+function editRow(button) {
+    var row = button.parentNode.parentNode;
+
+    var loadId = row.cells[0].innerText;
+    var broker = row.cells[1].innerText;
+    var pickupDate = row.cells[2].innerText;
+    var deliveryDate = row.cells[3].innerText;
+    var rate = row.cells[4].innerText;
+    var status = row.cells[5].innerText;
+
+    document.getElementById("loadId").value = loadId;
+    document.getElementById("broker").value = broker;
+    document.getElementById("pickupDate").value = pickupDate;
+    document.getElementById("deliveryDate").value = deliveryDate;
+    document.getElementById("rate").value = rate;
+    document.getElementById("status").value = status;
+
+    deleteRow(button);
+}
+
 function searchLoads() {
     var input = document.getElementById("searchInput").value.toLowerCase();
     var table = document.getElementById("loadTable");
@@ -275,8 +295,12 @@ function addLoadToTable(loadId, broker, pickupDate, deliveryDate, rate, status) 
     applyStatusColor(statusCell);
 
 
-    var deleteCell = row.insertCell(6);
-    deleteCell.innerHTML = "<button onclick='deleteRow(this)'>Delete</button>";
+   var actionCell = row.insertCell(6);
+actionCell.innerHTML = `
+    <button onclick='editRow(this)'>Edit</button>
+    <button onclick='deleteRow(this)'>Delete</button>
+`;
+
 
     updateDashboard();
 
@@ -361,6 +385,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
