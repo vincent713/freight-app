@@ -256,17 +256,18 @@ function login() {
     }
 }
 
+window.onload = function() {
 
-
-
-window.// Check login session
+    // ✅ Check login session first
     if(localStorage.getItem("isLoggedIn") === "true") {
-    document.getElementById("loginPage").style.display = "none";
-    document.getElementById("appPage").style.display = "block";
-}
-onload = function() {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("appPage").style.display = "block";
+    } else {
+        document.getElementById("loginPage").style.display = "block";
+        document.getElementById("appPage").style.display = "none";
+    }
 
-    // Load saved loads
+    // ✅ Load saved loads
     let savedLoads = JSON.parse(localStorage.getItem("loads")) || [];
 
     savedLoads.forEach(load =>
@@ -282,7 +283,7 @@ onload = function() {
 
     updateDashboard();
 
-    // Load saved theme
+    // ✅ Load saved theme
     var savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "dark") {
@@ -426,6 +427,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
