@@ -44,6 +44,8 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+<h2>Revenue Overview</h2>
+<canvas id="revenueChart" height="100"></canvas>
 
 .table-container {
     overflow-x: auto;
@@ -61,6 +63,7 @@ body {
     }
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </head>
 <body>
@@ -216,7 +219,53 @@ function changePassword() {
     alert("Password updated successfully!");
     document.getElementById("newPassword").value = "";
 }
-    
+  var revenueChart;
+
+function updateRevenueChart() {
+
+    var table = document.getElementById("loadTable");
+    var rows = table.querySelectorAll("tr");
+
+    var labels = [];
+    var revenueData = [];
+
+    rows.forEach(function(row, index) {
+
+        var cols = row.querySelectorAll("td");
+
+        if(cols.length > 0) {
+
+            labels.push("Load " + (index));
+            revenueData.push(parseFloat(cols[4].innerText) || 0);
+        }
+    });
+
+    var ctx = document.getElementById("revenueChart").getContext("2d");
+
+    if(revenueChart) {
+        revenueChart.destroy();
+    }
+
+    revenueChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+            labels: labels,
+            datasets: [{
+                label: "Revenue ($)",
+                data: revenueData
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
+}
+  
 function editRow(button) {
     var row = button.parentNode.parentNode;
 
@@ -333,6 +382,7 @@ window.onload = function() {
         document.getElementById("loginPage").style.display = "block";
         document.getElementById("appPage").style.display = "none";
     }
+updateRevenueChart();
 
     // ✅ Load saved loads
     let savedLoads = JSON.parse(localStorage.getItem("loads")) || [];
@@ -377,6 +427,7 @@ function addLoad() {
         alert("Please fill all fields!");
         return;
     }
+updateRevenueChart();
 
     addLoadToTable(loadId, broker, pickupDate, deliveryDate, rate, status);
     saveLoad(loadId, broker, pickupDate, deliveryDate, rate, status);
@@ -433,6 +484,7 @@ function deleteRow(button) {
 
 
 }
+updateRevenueChart();
 
 function logout() {
     localStorage.removeItem("isLoggedIn");
@@ -533,6 +585,7 @@ function exportToCSV() {
 
 </body>
 </html>
+
 
 
 
