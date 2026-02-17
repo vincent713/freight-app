@@ -197,6 +197,22 @@ function downloadPDF() {
 }
 
 <script>
+  function applyRole() {
+
+    var role = localStorage.getItem("role");
+
+    if(role === "staff") {
+
+        // Hide delete buttons
+        var deleteButtons = document.querySelectorAll("button[onclick*='deleteRow']");
+        deleteButtons.forEach(btn => btn.style.display = "none");
+
+        // Hide change password button
+        var changeBtn = document.querySelector("button[onclick='showChangePassword()']");
+        if(changeBtn) changeBtn.style.display = "none";
+    }
+}
+
 function showChangePassword() {
     var box = document.getElementById("changePasswordBox");
     box.style.display = box.style.display === "none" ? "block" : "none";
@@ -312,14 +328,29 @@ function login() {
     if(user === "admin" && pass === savedPassword) {
 
         localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("role", "admin");
 
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("appPage").style.display = "block";
 
-    } else {
+        applyRole();
+
+    } 
+    else if(user === "staff" && pass === "staff123") {
+
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("role", "staff");
+
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("appPage").style.display = "block";
+
+        applyRole();
+    } 
+    else {
         document.getElementById("error").innerText = "Invalid login!";
     }
 }
+
 
 window.onload = function() {
 
@@ -345,6 +376,7 @@ window.onload = function() {
             load.status
         )
     );
+     applyRole();
 
     updateDashboard();
 
@@ -440,13 +472,8 @@ function logout() {
 }
 
 
-function downloadPDF() {
-    var table = document.getElementById("loadTable");
+applyRole();
 
-    if (table.rows.length === 0) {
-        alert("No loads to export.");
-        return;
-    }
 
     var content = "<h1>Freight Load Report</h1>";
     content += "<table border='1' style='border-collapse:collapse; width:100%;'>";
@@ -492,6 +519,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
