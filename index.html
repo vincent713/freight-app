@@ -68,7 +68,7 @@ body {
 </button>
 
 <div id="loginPage" style="display:flex; justify-content:center; align-items:center; height:100vh;">
-     
+
     <div class="login-card">
 
         
@@ -94,7 +94,11 @@ body {
 
     <h2>VSC Logistics</h2>
     <p style="color:gray; margin-bottom:30px;">Freight Management System</p>
-      
+
+    <input type="text" id="username" placeholder="Username"><br><br>
+    <input type="password" id="password" placeholder="Password"><br><br>
+
+    <button onclick="login()">Login</button>
 
     <p id="error" style="color:red;"></p>
 
@@ -197,17 +201,6 @@ function downloadPDF() {
 }
 
 <script>
- 
-        // Hide delete buttons
-        var deleteButtons = document.querySelectorAll("button[onclick*='deleteRow']");
-        deleteButtons.forEach(btn => btn.style.display = "none");
-
-        // Hide change password button
-        var changeBtn = document.querySelector("button[onclick='showChangePassword()']");
-        if(changeBtn) changeBtn.style.display = "none";
-    }
-}
-
 function showChangePassword() {
     var box = document.getElementById("changePasswordBox");
     box.style.display = box.style.display === "none" ? "block" : "none";
@@ -332,8 +325,6 @@ function login() {
     }
 }
 
-    
-
 window.onload = function() {
 
     // ✅ Check login session first
@@ -358,7 +349,7 @@ window.onload = function() {
             load.status
         )
     );
-    
+
     updateDashboard();
 
     // ✅ Load saved theme
@@ -453,8 +444,15 @@ function logout() {
 }
 
 
+function downloadPDF() {
+    var table = document.getElementById("loadTable");
 
-   var content = "<h1>Freight Load Report</h1>";
+    if (table.rows.length === 0) {
+        alert("No loads to export.");
+        return;
+    }
+
+    var content = "<h1>Freight Load Report</h1>";
     content += "<table border='1' style='border-collapse:collapse; width:100%;'>";
     content += "<tr><th>Load ID</th><th>Broker</th><th>Pickup Date</th><th>Delivery Date</th><th>Rate ($)</th><th>Status</th></tr>";
 
@@ -498,16 +496,6 @@ function toggleDarkMode() {
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
 
 
 
