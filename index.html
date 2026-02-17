@@ -197,12 +197,7 @@ function downloadPDF() {
 }
 
 <script>
-  function applyRole() {
-
-    var role = localStorage.getItem("role");
-
-    if(role === "staff") {
-
+ 
         // Hide delete buttons
         var deleteButtons = document.querySelectorAll("button[onclick*='deleteRow']");
         deleteButtons.forEach(btn => btn.style.display = "none");
@@ -506,6 +501,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
