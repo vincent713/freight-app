@@ -328,12 +328,14 @@ function login() {
     if(user === "admin" && pass === savedPassword) {
 
         localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("role", "admin");
 
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("appPage").style.display = "block";
 
-        applyRole();
+    } else {
+        document.getElementById("error").innerText = "Invalid login!";
+    }
+}
 
     } 
     else if(user === "staff" && pass === "staff123") {
@@ -519,6 +521,7 @@ function toggleDarkMode() {
 
 </body>
 </html>
+
 
 
 
