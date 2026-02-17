@@ -220,11 +220,23 @@ function changePassword() {
     alert("Password updated successfully!");
     document.getElementById("newPassword").value = "";
 }
+ 
+           
+   
   var revenueChart;
 
 function updateRevenueChart() {
 
+    var canvas = document.getElementById("revenueChart");
+
+    if (!canvas) {
+        console.log("Chart canvas not found.");
+        return;
+    }
+
     var table = document.getElementById("loadTable");
+    if (!table) return;
+
     var rows = table.querySelectorAll("tr");
 
     var labels = [];
@@ -234,16 +246,15 @@ function updateRevenueChart() {
 
         var cols = row.querySelectorAll("td");
 
-        if(cols.length > 0) {
-
-            labels.push("Load " + (index));
+        if (cols.length > 0) {
+            labels.push("Load " + index);
             revenueData.push(parseFloat(cols[4].innerText) || 0);
         }
     });
 
-    var ctx = document.getElementById("revenueChart").getContext("2d");
+    var ctx = canvas.getContext("2d");
 
-    if(revenueChart) {
+    if (revenueChart) {
         revenueChart.destroy();
     }
 
@@ -257,16 +268,11 @@ function updateRevenueChart() {
             }]
         },
         options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    display: true
-                }
-            }
+            responsive: true
         }
     });
 }
-  
+
 function editRow(button) {
     var row = button.parentNode.parentNode;
 
@@ -377,13 +383,15 @@ window.onload = function() {
 
     // ✅ Check login session first
     if(localStorage.getItem("isLoggedIn") === "true") {
+      updateRevenueChart();
+
         document.getElementById("loginPage").style.display = "none";
         document.getElementById("appPage").style.display = "block";
     } else {
         document.getElementById("loginPage").style.display = "block";
         document.getElementById("appPage").style.display = "none";
     }
-updateRevenueChart();
+
 
     // ✅ Load saved loads
     let savedLoads = JSON.parse(localStorage.getItem("loads")) || [];
@@ -482,10 +490,10 @@ function deleteRow(button) {
     savedLoads = savedLoads.filter(load => load.loadId !== loadId);
     localStorage.setItem("loads", JSON.stringify(savedLoads));
     updateDashboard();
-
+updateRevenueChart();
 
 }
-updateRevenueChart();
+
 
 function logout() {
     localStorage.removeItem("isLoggedIn");
@@ -586,6 +594,7 @@ function exportToCSV() {
 
 </body>
 </html>
+
 
 
 
